@@ -5,9 +5,11 @@ const titulo_clima = document.querySelector("#titulo_clima");
 
 async function buscarClima() {
 
+    // Solicita permissão ao usuário para acessar sua localização
     navigator.geolocation.getCurrentPosition(
         async (posicao) => {
 
+            //Busca a localização do usuário - latitude e longitude
             const latitude = posicao.coords.latitude;
             const longitude = posicao.coords.longitude;
 
@@ -19,14 +21,18 @@ async function buscarClima() {
                 titulo_clima.style.display = "none";
                 buscar.style.display = "none";
                 
+                //Requisição para a API Open-Meteo usando a localização do usuário
                 const respostaClima = await fetch(
                     `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m&timezone=auto`
                 );
 
+                //Transforma a resposta em JSON
                 const dadosClima = await respostaClima.json();
 
                 console.log("Clima:", dadosClima);
 
+                //Mostra o clima para o usuário na página 
+                //Acessa os dados atuais do clima (current) e pega a temperatura medida a 2 metros de altura (temperature_2m), a velocidade do vento media a 10 metros e a umidade a 2 metros de altura
                 resultadoClima.innerHTML = `
                     <h2>Clima atual</h2>
 
@@ -53,7 +59,8 @@ async function buscarClima() {
         },
 
         (erro) => {
-
+            
+            //É executado caso o usuário não permita que o sistema acesse a localização
             console.log("Erro de localização:", erro);
 
             resultadoClima.textContent =
