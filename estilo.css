@@ -27,8 +27,7 @@ header {
     padding-right: 2%;
 }
 
-h2,
-h3 {
+h2,h3 {
     color: #740000;
     display: flex;
     justify-content: center;
@@ -73,6 +72,12 @@ p {
     text-align: justify;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+#resultadoClima{
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
 }
 
 #clima {
@@ -171,6 +176,16 @@ footer {
     padding-left: 10px;
     padding-right: 10px;
     font-size: medium;
+    flex-wrap: wrap;
+}
+
+#rodape {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
 /* Media query - Tablets */
@@ -228,10 +243,30 @@ footer {
         height: auto;
         padding: 4px;
     }
+
+    #noticia {
+        width: 60%;
+    }
+
+    img {
+        width: 90%;
+    }
 }
 
 /* Media Query - Celular */
 @media (max-width: 767px) {
+    .conteudo_contato {
+        width: 90%;
+    }
+
+    #noticia {
+        width: 70%;
+    }
+
+    img {
+        width: 90%;
+    }
+
     p {
         font-size: large;
     }
