@@ -48,18 +48,17 @@ async function buscarClima() {
                         ${dadosClima.current.wind_speed_10m} km/h
                     </p>
                 `;
-
+            
             } catch (erro) {
-
+                // Caso ocorra algum erro, o erro será exibido no console
                 console.log("Erro ao buscar clima:", erro);
-
+                //Informa o usuário que não foi possível buscar o clima
                 resultadoClima.textContent =
                     "Não foi possível buscar o clima.";
             }
         },
 
         (erro) => {
-            
             //É executado caso o usuário não permita que o sistema acesse a localização
             console.log("Erro de localização:", erro);
 
@@ -69,4 +68,5 @@ async function buscarClima() {
     );
 }
 
+// Ao clicar no botão a função buscarClima() é chamada para buscar o clima atual do usuário
 buscar.addEventListener("click", buscarClima);

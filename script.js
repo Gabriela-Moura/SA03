@@ -54,6 +54,7 @@ async function buscarNoticias() {
 
         // Transforma cada notícia em um objeto da classe Noticia
         const noticias = dados.results.map(noticia => {
+
         //map() percorre e transforma cada notícia em um objeto da classe Noticia
             return new Noticia(
                 noticia.title,
@@ -65,17 +66,20 @@ async function buscarNoticias() {
 
         });
 
+        //Chama o método exibir_noticia() para cada notícia e mostra no console o título e a imagem de cada notícia.
         noticias.forEach(noticia => {
+            //exibir_noticia() mostra a notícia na index
             noticia.exibir_noticia();
             console.log(noticia.titulo);
             console.log("Imagem:", noticia.imagem);
         });
 
     } catch (erro) {
-
+        // Caso ocorra algum erro, o erro será exibido no console
         console.log("Erro:", erro);
 
     }
 }
 
+// Chama a função buscarNoticias() para fazer a requisição e exibir as notícias na página
 buscarNoticias();
